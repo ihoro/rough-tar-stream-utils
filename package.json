@@ -8,7 +8,7 @@
     "test-watch": "jest --coverage --watchAll"
   },
   "bin": {
-    "tar-stream-chunker" : "bin/tar-stream-chunker"
+    "tar-stream-chunker": "bin/tar-stream-chunker"
   },
   "author": "Igor Ostapenko",
   "license": "BSD-2-Clause",
@@ -46,16 +46,16 @@
     "access": "public"
   },
   "devDependencies": {
-    "jest": "^24.9.0"
+    "jest": "^24.9.0",
+    "rxjs": "^6.5.4",
+    "uuid": "^3.3.3"
   },
   "jest": {
     "roots": [
       "src/",
       "test/"
     ],
-    "testMatch": [
-      "**/test/**/*.js"
-    ]
+    "testTimeout": 16000
   },
   "dependencies": {
     "any-base": "^1.1.0",

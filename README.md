@@ -45,6 +45,3 @@ In order to assemble the original file:
 $ cat file.chunk* > file
 ```
 
-### TODO
-
-- add test coverage

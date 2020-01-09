@@ -96,6 +96,9 @@ const flushBuffer = (buffer, writable, cb) => {
 // Finalise
 
 process.stdin.on('end', () => {
+  if (bufferedBytes <= 0)
+    return addReadme();
+
   chunkIndex++;
   totalBytes += bufferedBytes;
   reportStatus();
