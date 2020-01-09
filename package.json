@@ -2,7 +2,6 @@
   "name": "@rough/tar-stream-utils",
   "version": "1.0.0",
   "description": "Implementation of particular tar streaming use cases",
-  "main": "lib",
   "type": "commonjs",
   "scripts": {
     "test": "jest --coverage",
@@ -54,5 +53,10 @@
     "testMatch": [
       "**/test/**/*.js"
     ]
+  },
+  "dependencies": {
+    "any-base": "^1.1.0",
+    "minimist": "^1.2.0",
+    "tar-stream": "^2.1.0"
   }
 }
