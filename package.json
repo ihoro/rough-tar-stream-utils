@@ -1,6 +1,6 @@
 {
   "name": "@rough/tar-stream-utils",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Implementation of particular tar streaming use cases",
   "type": "commonjs",
   "scripts": {
