@@ -18,7 +18,7 @@ service.
 
 ### Usage example
 
-- `$ npm install -g tar-stream-utils`
+- `$ npm install -g @rough/tar-stream-utils`
 - `$ pg_dump <options> | tar-stream-chunker --file-name db-dump.sql --chunk-size 100000000 | tarsnap -cvf db-dump.sql.$(date +daily.%Y%m%d.%H%M%S) @-`
 
 And resulting TAR archive could look like this:
