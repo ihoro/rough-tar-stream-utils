@@ -8,7 +8,7 @@
     "test-watch": "jest --coverage --watchAll"
   },
   "bin": {
-    "tar-stream-chunker" : "src/tar-stream-chunker.js"
+    "tar-stream-chunker" : "bin/tar-stream-chunker"
   },
   "author": "Igor Ostapenko",
   "license": "BSD-2-Clause",
