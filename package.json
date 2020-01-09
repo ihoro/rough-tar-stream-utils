@@ -1,0 +1,58 @@
+{
+  "name": "@rough/tar-stream-utils",
+  "version": "1.0.0",
+  "description": "Implementation of particular tar streaming use cases",
+  "main": "lib",
+  "type": "commonjs",
+  "scripts": {
+    "test": "jest --coverage",
+    "test-watch": "jest --coverage --watchAll"
+  },
+  "author": "Igor Ostapenko",
+  "license": "BSD-2-Clause",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ihoro/rough-tar-stream-utils.git"
+  },
+  "keywords": [
+    "tar",
+    "pack",
+    "packing",
+    "chunk",
+    "chunking",
+    "split",
+    "splitting",
+    "tarball",
+    "archive",
+    "archiving",
+    "generate",
+    "generator",
+    "streaming",
+    "stream",
+    "streams",
+    "utils",
+    "util",
+    "tarsnap",
+    "backup",
+    "dump"
+  ],
+  "bugs": {
+    "url": "https://github.com/ihoro/rough-tar-stream-utils/issues"
+  },
+  "homepage": "https://github.com/ihoro/rough-tar-stream-utils#readme",
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "jest": "^24.9.0"
+  },
+  "jest": {
+    "roots": [
+      "src/",
+      "test/"
+    ],
+    "testMatch": [
+      "**/test/**/*.js"
+    ]
+  }
+}
