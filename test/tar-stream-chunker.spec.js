@@ -82,7 +82,7 @@ test('should create TAR with a single chunk if stdin has 1024*1024 bytes length 
   t.run .exec(_ => `printf '%.1s' {1..1048576} > ${t.tmp.orig}`),
 
   t.run .mktemp('tar'),
-  t.run .exec(_ => `cat ${t.tmp.orig} | ${cmd} --file-name file --chunk-size 1048576 > ${t.tmp.tar}`),
+  t.run .exec(_ => `printf '%.1s' {1..1048576} | ${cmd} --file-name file --chunk-size 1048576 > ${t.tmp.tar}`),
 
   t.run .exec(_ => `tar -tf ${t.tmp.tar} | grep file`),
   tap(({ stdout }) => expect(stdout.trim().split('\n')).toHaveLength(1)),
