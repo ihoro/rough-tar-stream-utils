@@ -13,7 +13,7 @@ hitting a disk. As long as creating TAR archive as a stream needs to now
 file size ahead, that is why the idea of the chunker is to split input stream
 onto chunks with known size.
 
-Initially this tool was created to use for data backup using tarsnap.com
+Initially this tool was created to use for data backup using [tarsnap.com](https://tarsnap.com)
 service.
 
 ### Usage example
