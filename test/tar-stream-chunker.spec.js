@@ -61,12 +61,12 @@ test('should create TAR with a single chunk if stdin has 2 bytes length and user
   tap(({ stdout }) => expect(stdout).toEqual('AB')),
 ));
 
-test('should create TAR with more than 1 chunk if stdin has 10*1024*1024 bytes length and user asked for chunk size in 1024 bytes', t.pipe(
+test('should create TAR with more than 1 chunk if stdin has 1024*1024 bytes length with slow data production and user asked for chunk size in 1024 bytes', t.pipe(
   t.run .mktemp('orig'),
-  t.run .exec(_ => `bash -c "printf '%.1s' {1..10485760}" > ${t.tmp.orig}`),
+  t.run .exec(_ => `node -e "for(let i=1;i<=1048576;i++)process.stdout.write(String(i)[0])" > ${t.tmp.orig}`),
 
   t.run .mktemp('tar'),
-  t.run .exec(_ => `bash -c "printf '%.1s' {1..10485760}" | ${cmd} --file-name file --chunk-size 1024 > ${t.tmp.tar}`),
+  t.run .exec(_ => `node -e "for(let i=1;i<=1048576;i++)process.stdout.write(String(i)[0])" | ${cmd} --file-name file --chunk-size 1024 > ${t.tmp.tar}`),
 
   t.run .exec(_ => `tar -tf ${t.tmp.tar} | grep file`),
   tap(({ stdout }) => expect(stdout.trim().split('\n').length).toBeGreaterThan(1)),
