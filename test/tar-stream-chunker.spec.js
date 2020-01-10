@@ -72,7 +72,7 @@ test('should create TAR with more than 1 chunk if stdin has 1024*1024 bytes leng
   tap(({ stdout }) => expect(stdout.trim().split('\n').length).toBeGreaterThan(1)),
 
   t.run .mktemp('result'),
-  t.run .exec(_ => `tar -xf ${t.tmp.tar} -O 'file.chunk*' > ${t.tmp.result}`),
+  t.run .exec(_ => `tar -xf ${t.tmp.tar}; cat file.chunk* > ${t.tmp.result}; rm -f README file.chunk*`),
   t.run .exec(_ => `diff -uq ${t.tmp.orig} ${t.tmp.result}`),
   tap(({ stdout }) => expect(stdout.trim()).toHaveLength(0)),
 ));
@@ -88,7 +88,7 @@ test('should create TAR with a single chunk if stdin has 1024*1024 bytes length 
   tap(({ stdout }) => expect(stdout.trim().split('\n')).toHaveLength(1)),
 
   t.run .mktemp('result'),
-  t.run .exec(_ => `tar -xf ${t.tmp.tar} -O 'file.chunk*' > ${t.tmp.result}`),
+  t.run .exec(_ => `tar -xf ${t.tmp.tar}; cat file.chunk* > ${t.tmp.result}; rm -f README file.chunk*`),
   t.run .exec(_ => `diff -uq ${t.tmp.orig} ${t.tmp.result}`),
   tap(({ stdout }) => expect(stdout.trim()).toHaveLength(0)),
 ));
