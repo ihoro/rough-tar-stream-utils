@@ -3,8 +3,8 @@
 const uuid = require('uuid/v4');
 const fs = require('fs');
 const child_process = require('child_process');
-const { of, Observable } = require('rxjs');
-const { mergeMap, tap } = require('rxjs/operators');
+const { from, of, Observable, bindCallback } = require('rxjs');
+const { mergeMap, tap, finalize, count } = require('rxjs/operators');
 
 module.exports = class {
   constructor() {
@@ -17,30 +17,21 @@ module.exports = class {
   setUp() {
     return of(this).pipe(
       tap(_ => this.tmp = {}),
+      finalize(_ => this.doTearDown()),
     );
   }
 
   tearDown(testFrameworkCallback) {
     return {
-      next: _ => {
-        // emptiness
-      },
-      error: err => {
-        this.doTearDown();
-        testFrameworkCallback(err);
-      },
-      complete: _ => {
-        this.doTearDown();
-        testFrameworkCallback();
-      }
+      next: _ => {},
+      error: err => testFrameworkCallback(err),
+      complete: _ => testFrameworkCallback(),
     };
   }
 
   doTearDown() {
-    if (!this.tmp)
-      return;
     for (let key in this.tmp)
-      fs.unlinkSync(this.tmp[key]);
+      fs.unlink(this.tmp[key], () => {});
   }
 
   mktemp(refName) {
