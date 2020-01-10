@@ -72,14 +72,14 @@ test('should create TAR with more than 1 chunk if stdin has 1024*1024 bytes leng
   tap(({ stdout }) => expect(stdout.trim().split('\n').length).toBeGreaterThan(1)),
 
   t.run .mktemp('result'),
-  t.run .exec(_ => `tar -xf ${t.tmp.tar} -O file.chunk* > ${t.tmp.result}`),
-  t.run .exec(_ => `diff -u ${t.tmp.orig} ${t.tmp.result}`),
+  t.run .exec(_ => `tar -xf ${t.tmp.tar} -O 'file.chunk*' > ${t.tmp.result}`),
+  t.run .exec(_ => `diff -uq ${t.tmp.orig} ${t.tmp.result}`),
   tap(({ stdout }) => expect(stdout.trim()).toHaveLength(0)),
 ));
 
 test('should create TAR with a single chunk if stdin has 1024*1024 bytes length and user asked for chunk size in 1024*1024 bytes', t.pipe(
   t.run .mktemp('orig'),
-  t.run .exec(_ => `printf '%.1s' {1..1048576} > ${t.tmp.orig}`),
+  t.run .exec(_ => `node -e "for(let i=1;i<=1048576;i++)process.stdout.write(String(i)[0])" > ${t.tmp.orig}`),
 
   t.run .mktemp('tar'),
   t.run .exec(_ => `cat ${t.tmp.orig} | ${cmd} --file-name file --chunk-size 1048576 > ${t.tmp.tar}`),
@@ -88,8 +88,8 @@ test('should create TAR with a single chunk if stdin has 1024*1024 bytes length 
   tap(({ stdout }) => expect(stdout.trim().split('\n')).toHaveLength(1)),
 
   t.run .mktemp('result'),
-  t.run .exec(_ => `tar -xf ${t.tmp.tar} -O file.chunk* > ${t.tmp.result}`),
-  t.run .exec(_ => `diff -u ${t.tmp.orig} ${t.tmp.result}`),
+  t.run .exec(_ => `tar -xf ${t.tmp.tar} -O 'file.chunk*' > ${t.tmp.result}`),
+  t.run .exec(_ => `diff -uq ${t.tmp.orig} ${t.tmp.result}`),
   tap(({ stdout }) => expect(stdout.trim()).toHaveLength(0)),
 ));
 
