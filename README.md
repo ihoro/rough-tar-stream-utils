@@ -14,7 +14,8 @@ file size in advance, that is why the idea of the chunker is to split input
 stream onto chunks with known size.
 
 Initially this tool was created to use for data backup using [tarsnap.com](https://tarsnap.com)
-service.
+service. But I ended up with [tar-stream-chunker.c](https://github.com/ihoro/tar-stream-chunker.c)
+for better performance and optimal memory usage.
 
 ### Usage example
 

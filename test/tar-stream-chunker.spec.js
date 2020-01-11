@@ -5,7 +5,7 @@ const { tap } = require('rxjs/operators');
 
 const cmd = `node ${__dirname}/../src/tar-stream-chunker`;
 
-test('should pass print usage help if no params provided', t.pipe(
+test('should print usage help if no params provided', t.pipe(
   t.run .exec(cmd),
   tap(({ stderr }) => expect(stderr).toContain('Usage:')),
 ));
