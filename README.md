@@ -9,7 +9,7 @@ tar-stream-chunker tool for now.
 ## tar-stream-chunker
 
 tar-stream-chunker can help to handle data stream of unknown size without
-hitting a disk. As long as creating TAR archive as a stream needs to now
+hitting a disk. As long as creating TAR archive as a stream needs to know
 file size in advance, that is why the idea of the chunker is to split input
 stream onto chunks with known size.
 
